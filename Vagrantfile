@@ -54,8 +54,6 @@ class TraceCreatorProvisioning
         # """
         if playbook
             vagrant_guest.vm.provision :ansible_local do |ansible|
-                ansible.install_mode = "pip"
-                ansible.compatibility_mode = "2.0"
                 ansible.galaxy_role_file = requirements
                 ansible.playbook = playbook
             end
