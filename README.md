@@ -1,6 +1,6 @@
 # Trace-Creator
 
-Toolset for automated creation of full packet traces representing annotated units
+Toolset for automated creation of network traffic traces
 
 ## Getting started
 
