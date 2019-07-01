@@ -1,0 +1,42 @@
+# """
+# This configuration allows to set system properties of Trace-Creator virtual
+# guests provisioned by Vagrant.
+#
+# All guest attributes in this example are mandatory.
+# """
+---
+
+- name: attacker
+  # Select Vagrant guest virtual machine box.
+  # You can search for boxes at https://atlas.hashicorp.com/search
+  box: ubuntu/bionic64
+  box_url: ubuntu/bionic64
+  # Selected IP addresses should not exists in your current network
+  ip: 203.0.113.2
+  # Mask of the virtual private network
+  mask: 255.255.255.0
+  # Number of virtual CPUs
+  cpu: 1
+  # Size of main memory is in MB
+  memory: 1024
+  # Ansible playbook provision file (provisioned before bash)
+  ansible: configuration/provision/ansible/attacker.yml
+  # Ansible requirements file (to include external roles)
+  ansible_requirements: null
+  # Bash provision file
+  bash: null
+  # Indicate if run trace-creator capture script.
+  # Only one guest can have capture set to "true"! The guest will be deployed as last.
+  creator: true
+
+- name: defender
+  box: ubuntu/bionic64
+  box_url: ubuntu/bionic64
+  ip: 203.0.113.101
+  mask: 255.255.255.0  
+  cpu: 1
+  memory: 1024
+  ansible: configuration/provision/ansible/defender.yml
+  ansible_requirements: configuration/provision/ansible/requirements.yml
+  bash: configuration/provision/bash/defender.sh
+  creator: false
