@@ -31,7 +31,7 @@ Trace-Creator allows you to set up one source and multiple destination guests. E
 
 The configuration file allows defining any number of guests that can be provisioned using both Bash and [Ansible](https://www.ansible.com/). If the Bash provisioning is used, all commands in the specified file are directly executed in the guest machine. In addition to simple Bash provisioning, Ansible provisioning can be used, providing more advanced options (see official documentation at [https://docs.ansible.com/ansible/latest/](https://docs.ansible.com/ansible/latest/)). If both provisioning options are used, the Ansible is started before Bash.
 
-Example of environment configuration is available in [./configuration/deployment.yml](./configuration/deployment.yml) file specifying two virtual machines with various provisioning options.
+Example of environment configuration is available in [**./configuration/deployment.yml**](./configuration/deployment.yml) file specifying two virtual machines with various provisioning options.
 
 
 ### Basic commands
