@@ -44,14 +44,26 @@ Example of environment configuration is available in [**./configuration/deployme
 
 ### Commands Configuration
 
+Once the environment is set, the Trace-Creator toolset runs a generating script ([trace-creator.py](./trace-creator.py)) that starts to execute commands and capture corresponding network traffic based on settings in `./configuration/trace-creator.yml` configuration file.  The configuration file provides the following options:
 
+* `name` – the name of the command (will be part of output files name)
+* `command` – executed command (simple command or script)
+* `filter` – filter of network traffic capture (see [https://wiki.wireshark.org/CaptureFilters](https://wiki.wireshark.org/CaptureFilters))
+* `configuration` – commands performed before the main command is executed for additional settings of the virtual environment
+  * `ip` – address of the host that will be configured
+  * `command` – configuration command executed on the given host
+
+Configuration options `name` and `command` are mandatory. To manipulate the properties of the virtual network use [netem](https://wiki.linuxfoundation.org/networking/netem) tool in `configuration`.
+
+Example of commands configuration is available in [**./configuration/trace-creator.yml**](./configuration/trace-creator.yml) file containing two Nmap scan commands.
 
 ### Toolset Control
 
-- `$ vagrant up` – create and configure guest machines according to configuration files and run specified commands (all 
-capture files together with logs will be available in ./capture/ directory)
-- `$ vagrant provision attacker` – rerun creation script if an error occurred
-- `$ vagrant destroy` – destroy the virtual environment after the collection
+The Trace-Share toolset is controlled simply via [Vagrant command-line interface](https://www.vagrantup.com/docs/cli/). Use the following commands when both environment and commands are configured:
+
+- `$ vagrant up` – automatically create and provision virtual machines and start the generating script
+- `$ vagrant provision <guest_name>` – rerun provisioning if an error occurred
+- `$ vagrant destroy` – destroy the virtual environment after all network traffic traces are obtained
 
 
 ## Contribution
