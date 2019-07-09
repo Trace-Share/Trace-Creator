@@ -2,6 +2,15 @@
 
 Toolset for automated creation of network traffic traces
 
+### Table of Contents
+
+* [Requirements](#requirements)
+* [Getting started](#getting-started)
+   + [Environment Configuration](#environment-configuration)
+   + [Commands Configuration](#commands-configuration)
+   + [Toolset Control](#toolset-control)
+* [Contribution](#contribution)
+
 
 ## Requirements
 
@@ -33,8 +42,11 @@ The configuration file allows defining any number of guests that can be provisio
 
 Example of environment configuration is available in [**./configuration/deployment.yml**](./configuration/deployment.yml) file specifying two virtual machines with various provisioning options.
 
+### Commands Configuration
 
-### Basic commands
+
+
+### Toolset Control
 
 - `$ vagrant up` – create and configure guest machines according to configuration files and run specified commands (all 
 capture files together with logs will be available in ./capture/ directory)
