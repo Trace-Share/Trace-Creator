@@ -85,7 +85,7 @@ def host_configure(host, command, timestamp, output_directory, username, passwor
             os.makedirs(directory_name)
 
         if stdout:
-            with open(directory_name + host + ".out", 'w') as out_file:
+            with open(directory_name + host + ".log", 'w') as out_file:
                 out_file.write(stdout)
             cprint("[info] Command output: \n" + str(stdout), "green")
 
@@ -135,7 +135,7 @@ def run_command(task, timestamp, output_directory):
     stdout, stderr = process.communicate()
 
     if stdout:
-        log_filename = "{path}/{filename}.out".format(path=output_directory, filename=get_task_id(task, timestamp))
+        log_filename = "{path}/{filename}.log".format(path=output_directory, filename=get_task_id(task, timestamp))
         with open(log_filename, 'w') as out_file:
             out_file.write(stdout)
         cprint("[info] Command output: \n" + str(stdout), "green")
