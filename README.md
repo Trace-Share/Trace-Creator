@@ -10,14 +10,28 @@ Trace-Creator toolset is provided as an automated virtual environment able to ru
 We are trying to stay up to date with the latest versions of all used software and provisioning tools. Be sure that you are using the latest versions of Vagrant and VirtualBox to run the Trace-Creator toolset correctly.
 
 
-## Getting started
+## Getting Started
 
-We have it all prepared for you. The basic setup is preconfigured. You have to only set following configuration files 
-to prepare the environment:
+Trace-Creator emulates interactions between one source and multiple destination devices using a virtual environment automatically operated by Vagrant tool. Once the virtual environment is set up, a generating script ([trace-creator.py](./trace-creator.py)) automatically starts to execute specified commands and capture corresponding network traffic. Resulting network traffic traces are available in the `./capture/` directory after the execution of all specified commands.
 
-- [configuration/deployment.yml](configuration/deployment.yml) – set system properties of virtual guests and specify 
-additional provisioning files in Ansible od Bash
-- [configuration/trace-creator.yml](configuration/trace-creator.yml) – specify commands that should be performed on guests
+### Environment Configuration
+
+Trace-Creator allows you to set up one source and multiple destination guests. Environment specification and guest settings are specified in `./configuration/deployment.yml` configuration file providing the following configuration options:
+
+* `name` – the name of the guest machine
+* `box`,`box_url` – virtual machine box (see [https://atlas.hashicorp.com/search](https://atlas.hashicorp.com/search))
+* `ip` – address of the guest in the virtual private network
+* `mask` – address mask of the virtual private network
+* `cpu` – number of virtual CPUs
+* `memory` – the size of main memory is in MB
+* `ansible_requirements` – Ansible requirements file (external roles include)
+* `ansible` – Ansible playbook provision file
+* `bash` – Bash provision file
+* `creator` – execute trace-creator generating script on this guest (only one guest can be set to "true")
+
+The configuration file allows defining any number of guests that can be provisioned using both Bash and [Ansible](https://www.ansible.com/). If the Bash provisioning is used, all commands in the specified file are directly executed in the guest machine. In addition to simple Bash provisioning, Ansible provisioning can be used, providing more advanced options (see official documentation at [https://docs.ansible.com/ansible/latest/](https://docs.ansible.com/ansible/latest/)). If both provisioning options are used, the Ansible is started before Bash.
+
+Example of environment configuration is available in [./configuration/deployment.yml](./configuration/deployment.yml) file specifying two virtual machines with various provisioning options.
 
 
 ### Basic commands
