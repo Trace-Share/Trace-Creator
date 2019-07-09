@@ -6,13 +6,13 @@
 # """
 ---
 
-- name: attacker
+- name: source
   # Select Vagrant guest virtual machine box.
   # You can search for boxes at https://atlas.hashicorp.com/search
   box: ubuntu/bionic64
   box_url: ubuntu/bionic64
   # Selected IP addresses should not exists in your current network
-  ip: 203.0.113.2
+  ip: 10.0.0.2
   # Mask of the virtual private network
   mask: 255.255.255.0
   # Number of virtual CPUs
@@ -20,7 +20,7 @@
   # Size of main memory is in MB
   memory: 1024
   # Ansible playbook provision file (provisioned before bash)
-  ansible: configuration/provision/ansible/attacker.yml
+  ansible: configuration/provision/ansible/source.yml
   # Ansible requirements file (to include external roles)
   ansible_requirements: null
   # Bash provision file
@@ -29,14 +29,14 @@
   # Only one guest can have capture set to "true"! The guest will be deployed as last.
   creator: true
 
-- name: defender
+- name: destination-1
   box: ubuntu/bionic64
   box_url: ubuntu/bionic64
-  ip: 203.0.113.101
+  ip: 10.0.0.3
   mask: 255.255.255.0  
   cpu: 1
   memory: 1024
-  ansible: configuration/provision/ansible/defender.yml
+  ansible: configuration/provision/ansible/destination-1.yml
   ansible_requirements: configuration/provision/ansible/requirements.yml
-  bash: configuration/provision/bash/defender.sh
+  bash: configuration/provision/bash/destination-1.sh
   creator: false

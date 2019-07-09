@@ -7,16 +7,16 @@
 # """
 ---
 
-# Generate capture for a "nmap 203.0.113.101 -v" without any filter or additional provisioning
+# Generate capture for a "nmap 10.0.0.3 -v" without any filter or additional provisioning
 - name: Simple nmap
-  command: nmap 203.0.113.101 -v
+  command: nmap 10.0.0.3 -v
 
-# Update state of guests and generate capture for a "nmap -sW 203.0.113.101 -v" without ICMP traffic.
+# Update state of guests and generate capture for a "nmap -sW 10.0.0.3 -v" without ICMP traffic
 - name: Nmap without ICMP
   configuration:
-    - ip: 203.0.113.101
-      command: bash /vagrant/configuration/trace-creator/defender.sh
-    - ip: 203.0.113.2
-      command: bash /vagrant/configuration/trace-creator/attacker.sh
+    - ip: 10.0.0.3
+      command: bash /vagrant/configuration/trace-creator/destination-1.sh
+    - ip: 10.0.0.2
+      command: bash /vagrant/configuration/trace-creator/source.sh
   filter:  not icmp
-  command: nmap -sW 203.0.113.101 -v
+  command: nmap -sW 10.0.0.3 -v
