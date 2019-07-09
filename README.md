@@ -19,7 +19,7 @@ Trace-Creator emulates interactions between one source and multiple destination 
 Trace-Creator allows you to set up one source and multiple destination guests. Environment specification and guest settings are specified in `./configuration/deployment.yml` configuration file providing the following configuration options:
 
 * `name` – the name of the guest machine
-* `box`,`box_url` – virtual machine box (see [https://atlas.hashicorp.com/search](https://atlas.hashicorp.com/search))
+* `box`,`box_url` – virtual machine box (see [https://app.vagrantup.com/boxes/search](https://app.vagrantup.com/boxes/search))
 * `ip` – address of the guest in the virtual private network
 * `mask` – address mask of the virtual private network
 * `cpu` – number of virtual CPUs
