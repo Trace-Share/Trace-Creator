@@ -9,8 +9,8 @@
 - name: source
   # Select Vagrant guest virtual machine box.
   # You can search for boxes at https://atlas.hashicorp.com/search
-  box: ubuntu/bionic64
-  box_url: ubuntu/bionic64
+  box: ubuntu/trusty64
+  box_url: ubuntu/trusty64
   # Selected IP addresses should not exists in your current network
   ip: 10.0.0.2
   # Mask of the virtual private network
@@ -30,8 +30,8 @@
   creator: true
 
 - name: destination-1
-  box: ubuntu/bionic64
-  box_url: ubuntu/bionic64
+  box: ubuntu/trusty64
+  box_url: ubuntu/trusty64
   ip: 10.0.0.3
   mask: 255.255.255.0  
   cpu: 1
